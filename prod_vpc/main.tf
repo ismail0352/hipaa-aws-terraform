@@ -1,7 +1,7 @@
 # have this created before hand on AWS
-data "aws_eip" "Development-VPC-EIP" {
+data "aws_eip" "Production-VPC-EIP" {
   tags = {
-    Name = "Development-VPC-EIP"
+    Name = "Production-VPC-EIP"
   }
 }
 
@@ -27,7 +27,7 @@ module "vpc" {
   single_nat_gateway = true
 
   reuse_nat_ips       = true                                              # <= Skip creation of EIPs for the NAT Gateways
-  external_nat_ip_ids = data.aws_eip.Development-VPC-EIP.*.id        # <= IPs specified here as input to the module
+  external_nat_ip_ids = data.aws_eip.Production-VPC-EIP.*.id        # <= IPs specified here as input to the module
 
   tags = {
   Owner       = "Your-Company"
