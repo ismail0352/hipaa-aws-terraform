@@ -1,0 +1,14 @@
+# IDE
+.idea
+
+# Terraform
+.terraform/
+
+*.tfstate*
+
+terraform.tfvars
+*.tfstate
+*.backup
+
+terraform.tfstate
+terraform.tfstate.backup
