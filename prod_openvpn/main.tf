@@ -1,4 +1,4 @@
-module "dev-openvpn-sg" {
+module "prod-openvpn-sg" {
   # source                    = "../modules/security-group"
   source                    = "github.com/terraform-aws-modules/terraform-aws-security-group"
   name                      = "${var.vpn_name}-sg"
@@ -39,7 +39,7 @@ module "ec2" {
   ami                         = data.aws_ami.ubuntu18.id
   instance_type               = var.instance_type
   subnet_id                   = var.public_subnet_ids[0]
-  vpc_security_group_ids      = [module.dev-openvpn-sg.this_security_group_id]
+  vpc_security_group_ids      = [module.prod-openvpn-sg.this_security_group_id]
   associate_public_ip_address = true
   user_data                   = data.template_file.openvpn.rendered
   key_name                    = var.key_pair
